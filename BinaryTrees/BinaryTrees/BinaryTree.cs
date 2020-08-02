@@ -79,5 +79,42 @@ namespace BinaryTrees
             PostOrderTraversal(root.right);
             System.Console.WriteLine(root.data + " ");
         }
+
+        public IList<IList<int>> LevelOrderTraversal()
+        {
+            Queue<Node> queue = new Queue<Node>();
+            IList<IList<int>> result = new List<IList<int>>();
+
+            if (root == null)
+            { 
+                return result;
+            }
+
+            queue.Enqueue(root);
+
+            while (queue.Count > 0)
+            {
+                int size = queue.Count;
+                IList<int> currentLevel = new List<int>();
+
+                for (int i = 0; i < size; i++)
+                {
+                    Node current = queue.Dequeue();
+                    currentLevel.Add(current.data);
+                    if (current.left != null)
+                    {
+                        queue.Enqueue(current.left);
+                    }
+                    if (current.right != null)
+                    {
+                        queue.Enqueue(current.right);
+                    }
+                }
+
+                result.Add(currentLevel);
+            }
+       
+            return result;
+        }
     }
 }

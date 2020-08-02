@@ -29,9 +29,21 @@ namespace BinaryTrees
             Console.WriteLine("Post Order Traversal");
             binaryTree.PostOrderTraversal();
 
+            //Level Order Traversal
+            IList<IList<int>> result = binaryTree.LevelOrderTraversal();
+            Console.WriteLine("Level Order Traversal");
+            for (int i = 0; i < result.Count; i++)
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach(var item in result[i])
+                {
+                    sb.Append(item);
+                }
+                Console.WriteLine("Result at Level " + i + " is " + sb.ToString());
+            }
+
             Console.ReadKey();
             //08/02/2020
-            //Level order traversal
             //BFS
             //DFS
             //Find Parent of a Node
