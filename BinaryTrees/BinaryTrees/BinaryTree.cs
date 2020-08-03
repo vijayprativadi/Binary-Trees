@@ -116,5 +116,55 @@ namespace BinaryTrees
        
             return result;
         }
+
+        //Wrapper
+        public void FindParentofNode(int data)
+        {
+            FindParentofNode(root, data, -1);
+        }
+
+        private void FindParentofNode(Node node, int data, int parent)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            if (node.data == data)
+            {
+                Console.WriteLine("Parent of a Node "+data+" is: " + parent);
+            }
+            else
+            {
+                FindParentofNode(node.left, data, node.data);
+                FindParentofNode(node.right, data, node.data);
+            }
+        }
+
+        //Wrapper
+        public void FindSiblingofaNode(int value)
+        {
+            FindSiblingofaNode(root, value);
+        }
+
+        private void FindSiblingofaNode(Node node, int value)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            if (node.left != null && node.left.data == value)
+            {
+                Console.WriteLine("Sibling of a Node " + node.left.data + " is: " + node.right.data);
+            }
+            else if (node.right != null && node.right.data == value)
+            {
+                Console.WriteLine("Sibling of a Node " + node.right.data + " is: " + node.left.data);
+            }
+
+            FindSiblingofaNode(node.left, value);
+            FindSiblingofaNode(node.right, value);
+        }
     }
 }

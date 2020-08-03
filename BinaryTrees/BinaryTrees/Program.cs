@@ -42,12 +42,16 @@ namespace BinaryTrees
                 Console.WriteLine("Result at Level " + i + " is " + sb.ToString());
             }
 
+            //Find Parent of a Node
+            binaryTree.FindParentofNode(4);
+
+            //Find Sibling of a Node
+            binaryTree.FindSiblingofaNode(3);
+
             Console.ReadKey();
             //08/02/2020
             //BFS
             //DFS
-            //Find Parent of a Node
-            //Find Sibling Of a Node
 
             //08/03/2020
             //Find Cousin of a Node
