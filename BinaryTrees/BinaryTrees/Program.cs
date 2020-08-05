@@ -16,6 +16,8 @@ namespace BinaryTrees
             binaryTree.root.right = new Node(3);
             binaryTree.root.left.left = new Node(4);
             binaryTree.root.left.right = new Node(5);
+            binaryTree.root.right.left = new Node(6);
+            binaryTree.root.right.right = new Node(7);
 
             //Pre Order Traversal
             Console.WriteLine("Pre Order Traversal");
@@ -30,16 +32,16 @@ namespace BinaryTrees
             binaryTree.PostOrderTraversal();
 
             //Level Order Traversal
-            IList<IList<int>> result = binaryTree.LevelOrderTraversal();
+            IList<IList<int>> levelOrderTraversal = binaryTree.LevelOrderTraversal();
             Console.WriteLine("Level Order Traversal");
-            for (int i = 0; i < result.Count; i++)
+            for (int i = 0; i < levelOrderTraversal.Count; i++)
             {
-                StringBuilder sb = new StringBuilder();
-                foreach(var item in result[i])
+                StringBuilder sblevelOrderTraversal = new StringBuilder();
+                foreach(var item in levelOrderTraversal[i])
                 {
-                    sb.Append(item);
+                    sblevelOrderTraversal.Append(item);
                 }
-                Console.WriteLine("Result at Level " + i + " is " + sb.ToString());
+                Console.WriteLine("Result at Level " + i + " is " + sblevelOrderTraversal.ToString());
             }
 
             //Find Parent of a Node
@@ -48,13 +50,31 @@ namespace BinaryTrees
             //Find Sibling of a Node
             binaryTree.FindSiblingofaNode(3);
 
+            //Find Cousins of a Node
+            Console.WriteLine(binaryTree.IsCousins(4, 5));
+
+            //Vertical Order Traversal
+            IList<IList<int>> verticalOrderTraversal = binaryTree.VerticalOrderTraversal();
+            for (int i = 0; i < verticalOrderTraversal.Count; i++)
+            {
+                StringBuilder sbverticalOrderTraversal = new StringBuilder();
+                foreach (var item in verticalOrderTraversal[i])
+                {
+                    sbverticalOrderTraversal.Append(item);
+                }
+                Console.WriteLine("Result at Vertical Order Traversal is: " + sbverticalOrderTraversal.ToString());
+            }
+
+            //Minimum Depth/Height of Binary Tree
+            Console.WriteLine("Minimum Depth of the Binary Tree is: " + binaryTree.MinDepth(binaryTree.root));
+
+            //Maximum Depth/Height of Binary Tree
+            Console.WriteLine("Maximum Depth of the Binary Tree is: " + binaryTree.MaxDepth(binaryTree.root));
+
             Console.ReadKey();
-            //08/02/2020
-            //BFS
-            //DFS
 
             //08/03/2020
-            //Find Cousin of a Node
+            //Find Cousins of a Node
             //Sum of all leaf nodes
             //Branch Sum
             //Min Depth or height
@@ -68,10 +88,10 @@ namespace BinaryTrees
             //Bottom View
             //Left View
             //Right View
-            //Delete Binary Tree
             //Diameter of Binary Tree
+            //Delete a Node Binary Tree
             //Delete Binary Tree
-
+            
             //08/05/2020
             //LCS
             //Max Path Sum
@@ -80,7 +100,6 @@ namespace BinaryTrees
             //Closed Value in BST
             //Valid Binary Tree
             //Flatten Binary Tree
-            //Max Path Sum
 
             //08/06/2020
             //Node Depth

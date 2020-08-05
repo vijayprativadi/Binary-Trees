@@ -82,7 +82,7 @@ namespace BinaryTrees
 
         public IList<IList<int>> LevelOrderTraversal()
         {
-            Queue<Node> queue = new Queue<Node>();
+            Queue<Node> nodes = new Queue<Node>();
             IList<IList<int>> result = new List<IList<int>>();
 
             if (root == null)
@@ -90,24 +90,24 @@ namespace BinaryTrees
                 return result;
             }
 
-            queue.Enqueue(root);
+            nodes.Enqueue(root);
 
-            while (queue.Count > 0)
+            while (nodes.Count > 0)
             {
-                int size = queue.Count;
+                int size = nodes.Count;
                 IList<int> currentLevel = new List<int>();
 
                 for (int i = 0; i < size; i++)
                 {
-                    Node current = queue.Dequeue();
+                    Node current = nodes.Dequeue();
                     currentLevel.Add(current.data);
                     if (current.left != null)
                     {
-                        queue.Enqueue(current.left);
+                        nodes.Enqueue(current.left);
                     }
                     if (current.right != null)
                     {
-                        queue.Enqueue(current.right);
+                        nodes.Enqueue(current.right);
                     }
                 }
 
@@ -116,6 +116,126 @@ namespace BinaryTrees
        
             return result;
         }
+
+        public IList<IList<int>> VerticalOrderTraversal()
+        {
+            Queue<Node> nodes = new Queue<Node>();
+            Queue<int> col = new Queue<int>();
+            Dictionary<int, IList<int>> dic = new Dictionary<int, IList<int>>();
+            IList<IList<int>> result = new List<IList<int>>();
+
+            if (root == null)
+            {
+                return result;
+            }
+
+            nodes.Enqueue(root);
+            col.Enqueue(0);
+
+            while (nodes.Count > 0)
+            {
+                var node = nodes.Dequeue();
+                var colnum = col.Dequeue();
+                if (dic.ContainsKey(colnum))
+                {
+                    dic[colnum].Add(node.data);
+                }
+                else
+                {
+                    var list = new List<int>();
+                    list.Add(node.data);
+                    dic.Add(colnum, list);
+                }
+
+                if (node.left != null)
+                {
+                    nodes.Enqueue(node.left);
+                    col.Enqueue(colnum - 1);
+                }
+                if (node.right != null)
+                {
+                    nodes.Enqueue(node.right);
+                    col.Enqueue(colnum + 1);
+                }
+            }
+            var temp = dic.Keys.ToList();
+            temp.Sort();
+            foreach (var key in temp)
+            {
+                result.Add(dic[key]);
+            }
+            return result;
+        }
+
+        //public IList<IList<int>> VerticalOrderTraversal()
+        //{
+        //    Queue<Node> queue = new Queue<Node>();
+        //    IList<IList<int>> result = new List<IList<int>>();
+        //    Dictionary<int, List<int>> dict = new Dictionary<int, List<int>>();
+        //    if (root == null)
+        //    {
+        //        return result;
+        //    }
+
+        //    queue.Enqueue(root);
+        //    int hd = 0;
+        //    dict.Add(hd, new List<int> { root.data });
+        //    while (queue.Count > 0)
+        //    {
+        //        int size = queue.Count;
+        //        IList<int> currentLevel = new List<int>();
+        //        int hd1 = -99; int hd2 = -99;
+        //        for (int i = 0; i < size; i++)
+        //        {
+        //            Node current = queue.Dequeue();
+        //            currentLevel.Add(current.data);
+        //            if (current.left != null)
+        //            {
+        //                queue.Enqueue(current.left);
+        //                if (hd1 == -99)
+        //                {
+        //                    hd1 = hd - 1;
+        //                }
+        //                else
+        //                {
+        //                    hd1 = hd1 - 1;
+        //                }
+        //                if (!dict.ContainsKey(hd1))
+        //                {
+        //                    dict.Add(hd1, new List<int> { current.left.data });
+        //                }
+        //                else
+        //                {
+        //                    dict[hd1].Add(current.left.data);
+        //                }
+        //            }
+        //            if (current.right != null)
+        //            {
+        //                queue.Enqueue(current.right);
+        //                if (hd2 == -99)
+        //                {
+        //                    hd2 = hd + 1;
+        //                }
+        //                else
+        //                {
+        //                    hd2 = hd1 + 1;
+        //                }
+        //                if (!dict.ContainsKey(hd2))
+        //                {
+        //                    dict.Add(hd2, new List<int> { current.right.data });
+        //                }
+        //                else
+        //                {
+        //                    dict[hd2].Add(current.right.data);
+        //                }
+        //            }
+        //        }
+
+        //        result.Add(currentLevel);
+        //    }
+
+        //    return result;
+        //}
 
         //Wrapper
         public void FindParentofNode(int data)
@@ -165,6 +285,63 @@ namespace BinaryTrees
 
             FindSiblingofaNode(node.left, value);
             FindSiblingofaNode(node.right, value);
+        }
+
+        Node p1;
+        Node p2;
+        int l1;
+        int l2;
+        public bool IsCousins(int x, int y)
+        {
+            if (root == null || root.data == x || root.data == y) return false;
+
+            Find(root.left, root, 0, x, y);
+            Find(root.right, root, 0, x, y);
+
+            return (l1 == l2) && (p1.data != p2.data);
+        }
+
+        public void Find(Node root, Node parent, int level, int x, int y)
+        {
+            if (root == null) return;
+
+            if (root.data == x)
+            {
+                p1 = parent;
+                l1 = level;
+            }
+            else if (root.data == y)
+            {
+                p2 = parent;
+                l2 = level;
+            }
+
+            Find(root.left, root, level + 1, x, y);
+            Find(root.right, root, level + 1, x, y);
+        }
+
+        public int MinDepth(Node root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            int left = MinDepth(root.left);
+            int right = MinDepth(root.right);
+            return Math.Min(left, right) + 1;
+        }
+
+        public int MaxDepth(Node root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            int left = MaxDepth(root.left);
+            int right = MaxDepth(root.right);
+            return Math.Max(left, right) + 1;
         }
     }
 }
