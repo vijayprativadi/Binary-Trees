@@ -71,14 +71,22 @@ namespace BinaryTrees
             //Maximum Depth/Height of Binary Tree
             Console.WriteLine("Maximum Depth of the Binary Tree is: " + binaryTree.MaxDepth(binaryTree.root));
 
+            //Diameter of Binary Tree
+            Console.WriteLine("Diameter of the Binary Tree is: " + binaryTree.DiamterofBinaryTree(binaryTree.root));
+
+            //Sum of all Leaf Nodes
+            binaryTree.SumofAllLeafNodes();
+
+            //Sum of all Left Leaf Nodes
+            binaryTree.SumofAllLeftLeafNodes();
+
+            //Sum of all Right Leaf Nodes
+            binaryTree.SumofAllRightLeafNodes();
+
             Console.ReadKey();
 
             //08/03/2020
-            //Find Cousins of a Node
-            //Sum of all leaf nodes
             //Branch Sum
-            //Min Depth or height
-            //Max Depth or height
             //Boundry Traversal
             //Check If binary trees are identical
 
@@ -88,7 +96,6 @@ namespace BinaryTrees
             //Bottom View
             //Left View
             //Right View
-            //Diameter of Binary Tree
             //Delete a Node Binary Tree
             //Delete Binary Tree
             

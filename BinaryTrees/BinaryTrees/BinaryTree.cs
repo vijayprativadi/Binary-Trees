@@ -343,5 +343,97 @@ namespace BinaryTrees
             int right = MaxDepth(root.right);
             return Math.Max(left, right) + 1;
         }
+
+        public int DiamterofBinaryTree(Node root)
+        {
+            if (root == null)
+            {
+                return 0;
+            }
+
+            int leftHeight = MaxDepth(root.left);
+            int rightHeight = MaxDepth(root.right);
+
+            int leftDiameter = DiamterofBinaryTree(root.left);
+            int rightDiameter = DiamterofBinaryTree(root.right);
+
+            return Math.Max(leftHeight + rightHeight + 1, Math.Max(leftDiameter, rightDiameter));
+        }
+
+        public void SumofAllLeafNodes()
+        {
+            int sum = 0;
+            SumofAllLeafNodes(root, ref sum);
+            Console.WriteLine("Sum of all leaf nodes = {0}", sum);
+        }
+
+        private void SumofAllLeafNodes(Node node, ref int sum)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (node.left == null && node.right == null)
+            {
+                sum += node.data;
+            }
+
+            SumofAllLeafNodes(node.left, ref sum);
+            SumofAllLeafNodes(node.right, ref sum);
+        }
+
+        public void SumofAllLeftLeafNodes()
+        {
+            int sum = 0;
+            SumofAllLeftLeafNodes(root, ref sum);
+            Console.WriteLine("Sum of all Left Leaf nodes = {0}", sum);
+        }
+
+        private void SumofAllLeftLeafNodes(Node node, ref int sum)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (node.left == null && node.right == null)
+            {
+                sum += node.data;
+            }
+
+            SumofAllLeftLeafNodes(node.left, ref sum);
+
+            if ((node.right != null) && (node.right.left != null && node.right.right != null))
+            {
+                SumofAllLeftLeafNodes(node.right, ref sum);
+            }
+        }
+
+        public void SumofAllRightLeafNodes()
+        {
+            int sum = 0;
+            SumofAllRightLeafNodes(root, ref sum);
+            Console.WriteLine("Sum of all Right Leaf nodes = {0}", sum);
+        }
+
+        private void SumofAllRightLeafNodes(Node node, ref int sum)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            if (node.left == null && node.right == null)
+            {
+                sum += node.data;
+            }
+
+
+            if ((node.left != null) && (node.left.left != null && node.left.right != null))
+            {
+                SumofAllRightLeafNodes(node.left, ref sum);
+            }
+
+            SumofAllRightLeafNodes(node.right, ref sum);
+
+        }
     }
 }
