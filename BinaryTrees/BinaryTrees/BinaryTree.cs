@@ -451,5 +451,50 @@ namespace BinaryTrees
 
             return result;
         }
+
+        public Node DeleteNodeInBinaryTree(Node root, int value)
+        {
+            if (root == null)
+            {
+                return null;
+            }
+
+            if (value < root.data)
+            {
+                root.left = DeleteNodeInBinaryTree(root.left, value);
+            }
+            else if (value > root.data)
+            {
+                root.right = DeleteNodeInBinaryTree(root.right, value);
+            }
+            else
+            {
+                if (root.left == null && root.right == null)
+                {
+                    return null;
+                }
+                else if (root.left == null)
+                {
+                    root = root.right;
+                }
+                else if (root.right == null)
+                {
+                    root = root.left;
+                }
+                else
+                {
+                    Node min = root.right;
+                    while (min.left != null)
+                    {
+                        min = min.left;
+                    }
+
+                    root.data = min.data;
+                    root.right = DeleteNodeInBinaryTree(root.right, root.data);
+                }
+            }
+
+            return root;
+        }
     }
 }

@@ -86,34 +86,35 @@ namespace BinaryTrees
             //Closest Value in Binary Tree
             binaryTree.ClosestValueInBinaryTree(binaryTree.root, 3.8);
 
+            //Delete a Node in Binary Tree
+            BinaryTree deleteNodeBinaryTree = new BinaryTree();
+            deleteNodeBinaryTree.root = new Node(5);
+            deleteNodeBinaryTree.root.left = new Node(3);
+            deleteNodeBinaryTree.root.right = new Node(6);
+            deleteNodeBinaryTree.root.left.left = new Node(2);
+            deleteNodeBinaryTree.root.left.right = new Node(4);
+            deleteNodeBinaryTree.root.right.right = new Node(7);
+
+            Node deletedResultRoot = binaryTree.DeleteNodeInBinaryTree(deleteNodeBinaryTree.root, 3);
+
             Console.ReadKey();
+
+            //Check If binary trees are identical
+            //Check if binary tree is part of subtree
+            //Invert or Mirror Binary Tree
+            //Valid Binary Tree
+            //Boundry Traversal
 
             //08/03/2020
             //Branch Sum
-            //Boundry Traversal
-            //Check If binary trees are identical
-
-            //08/04/2020
-            //Check if binary tree is part of subtree
             //Top View
             //Bottom View
             //Left View
             //Right View
-            //Delete a Node Binary Tree
-            //Delete Binary Tree
-            
-            //08/05/2020
             //LCS
             //Max Path Sum
             //Reverse Alternate Levels
-            //Invert Binary Tree
-            //Closed Value in BST
-            //Valid Binary Tree
             //Flatten Binary Tree
-
-            //08/06/2020
-            //Node Depth
-            //Mirror Tree
         }
     }
 }
