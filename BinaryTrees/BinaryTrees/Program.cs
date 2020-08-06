@@ -83,6 +83,9 @@ namespace BinaryTrees
             //Sum of all Right Leaf Nodes
             binaryTree.SumofAllRightLeafNodes();
 
+            //Closest Value in Binary Tree
+            binaryTree.ClosestValueInBinaryTree(binaryTree.root, 3.8);
+
             Console.ReadKey();
 
             //08/03/2020

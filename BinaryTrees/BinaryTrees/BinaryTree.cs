@@ -435,5 +435,21 @@ namespace BinaryTrees
             SumofAllRightLeafNodes(node.right, ref sum);
 
         }
+
+        public int ClosestValueInBinaryTree(Node root, double target)
+        {
+            int result = root.data;
+            while (root != null)
+            {
+                if (Math.Abs(target - root.data) < Math.Abs(target - result))
+                {
+                    result = root.data;
+                }
+
+                root = (target < root.data) ? root.left : root.right;
+            }
+
+            return result;
+        }
     }
 }
