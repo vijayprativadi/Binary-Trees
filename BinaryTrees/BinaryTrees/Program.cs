@@ -100,9 +100,32 @@ namespace BinaryTrees
             //Is Valid Binary Search Tree
             Console.WriteLine("Is Valid Binary Search Tree: " + binaryTree.isValidBinarySearchTree());
 
+
+            //Check If Binary Trees are Identical
+            BinaryTree binaryTreeIdentical1 = new BinaryTree();
+            binaryTreeIdentical1.root = new Node(4);
+            binaryTreeIdentical1.root.left = new Node(2);
+            binaryTreeIdentical1.root.right = new Node(6);
+            binaryTreeIdentical1.root.left.left = new Node(1);
+            binaryTreeIdentical1.root.left.right = new Node(3);
+            binaryTreeIdentical1.root.right.left = new Node(5);
+            binaryTreeIdentical1.root.right.right = new Node(7);
+
+            BinaryTree binaryTreeIdentical2 = new BinaryTree();
+            binaryTreeIdentical2.root = new Node(4);
+            binaryTreeIdentical2.root.left = new Node(2);
+            binaryTreeIdentical2.root.right = new Node(6);
+            binaryTreeIdentical2.root.left.left = new Node(1);
+            binaryTreeIdentical2.root.left.right = new Node(3);
+            binaryTreeIdentical2.root.right.left = new Node(5);
+            binaryTreeIdentical2.root.right.right = new Node(7);
+
+            Console.WriteLine("Are these two Binary Trees Identical? Answer: " + binaryTree.checkIfBinaryTreesAreIdentical(binaryTreeIdentical1.root, binaryTreeIdentical2.root));
+
             Console.ReadKey();
 
             //Check If binary trees are identical
+            //Check If binary trees are isomorphic
             //Check if binary tree is part of subtree
             //Invert or Mirror Binary Tree
             //Boundry Traversal

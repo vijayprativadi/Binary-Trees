@@ -516,5 +516,23 @@ namespace BinaryTrees
 
             return isValid(root.left, min, root.data) && isValid(root.right, root.data, max);
         }
+
+        public bool checkIfBinaryTreesAreIdentical(Node root1, Node root2)
+        {
+            if(root1 == null && root2 == null)
+            {
+                return true;
+            }
+
+            if (root1 != null && root2 != null)
+            {
+                if (root1.data == root2.data && checkIfBinaryTreesAreIdentical(root1.left, root2.left) && checkIfBinaryTreesAreIdentical(root1.right, root2.right))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }
