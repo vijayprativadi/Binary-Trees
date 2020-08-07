@@ -51,7 +51,7 @@ namespace BinaryTrees
             binaryTree.FindSiblingofaNode(3);
 
             //Find Cousins of a Node
-            Console.WriteLine(binaryTree.IsCousins(4, 5));
+            Console.WriteLine("Is nodes 3 and 5 cousins: " + binaryTree.IsCousins(3, 5));
 
             //Vertical Order Traversal
             IList<IList<int>> verticalOrderTraversal = binaryTree.VerticalOrderTraversal();
@@ -105,7 +105,6 @@ namespace BinaryTrees
             //Check If binary trees are identical
             //Check if binary tree is part of subtree
             //Invert or Mirror Binary Tree
-            //Valid Binary Tree
             //Boundry Traversal
 
             //08/03/2020
