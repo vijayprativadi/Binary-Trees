@@ -11,12 +11,12 @@ namespace BinaryTrees
         static void Main(string[] args)
         {
             BinaryTree binaryTree = new BinaryTree();
-            binaryTree.root = new Node(1);
+            binaryTree.root = new Node(4);
             binaryTree.root.left = new Node(2);
-            binaryTree.root.right = new Node(3);
-            binaryTree.root.left.left = new Node(4);
-            binaryTree.root.left.right = new Node(5);
-            binaryTree.root.right.left = new Node(6);
+            binaryTree.root.right = new Node(6);
+            binaryTree.root.left.left = new Node(1);
+            binaryTree.root.left.right = new Node(3);
+            binaryTree.root.right.left = new Node(5);
             binaryTree.root.right.right = new Node(7);
 
             //Pre Order Traversal
@@ -95,7 +95,10 @@ namespace BinaryTrees
             deleteNodeBinaryTree.root.left.right = new Node(4);
             deleteNodeBinaryTree.root.right.right = new Node(7);
 
-            Node deletedResultRoot = binaryTree.DeleteNodeInBinaryTree(deleteNodeBinaryTree.root, 3);
+            Node deletedResultRoot = deleteNodeBinaryTree.DeleteNodeInBinaryTree(deleteNodeBinaryTree.root, 3);
+
+            //Is Valid Binary Search Tree
+            Console.WriteLine("Is Valid Binary Search Tree: " + binaryTree.isValidBinarySearchTree());
 
             Console.ReadKey();
 
