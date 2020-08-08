@@ -142,11 +142,23 @@ namespace BinaryTrees
                 Console.WriteLine(roottoLeafPathItem);
             }
 
+            //Lowest Common Ancestor
             Console.WriteLine("Lowest Common Ancestor of 1 and 3 is: " + binaryTree.LowestCommonAncestor(binaryTree.root, new Node(1), new Node(3)).data);
+
+            //Check If Given Trees are Isomorphic
+            BinaryTree t1 = new BinaryTree();
+            t1.root = new Node(4);
+            t1.root.left = new Node(2);
+            t1.root.right = new Node(6);
+
+            BinaryTree t2 = new BinaryTree();
+            t2.root = new Node(4);
+            t2.root.left = new Node(2);
+            t2.root.right = new Node(6);
+            Console.WriteLine("Are these two tree Isomorphic: " + binaryTree.CheckIfBinaryTreesAreIsomorphic(t1.root, t2.root));
 
             Console.ReadKey();
             
-            //Check If binary trees are isomorphic
             //Find Path equal to Sum K
             //Check if binary tree is part of subtree
             //Invert or Mirror Binary Tree
