@@ -156,6 +156,23 @@ namespace BinaryTrees
             t2.root.left = new Node(2);
             t2.root.right = new Node(6);
             Console.WriteLine("Are these two tree Isomorphic: " + binaryTree.CheckIfBinaryTreesAreIsomorphic(t1.root, t2.root));
+            
+            Console.WriteLine("Left View of Binary Tree");
+            StringBuilder sbLeftView = new StringBuilder();
+            for (int i = 0; i < levelOrderTraversal.Count; i++)
+            {
+                sbLeftView.Append(levelOrderTraversal[i][0]);
+            }
+            Console.WriteLine("Result at Left View of Given Binary Tree is: " + sbLeftView.ToString());
+
+            Console.WriteLine("Right View of Binary Tree");
+            StringBuilder sbRightView = new StringBuilder();
+            for (int i = 0; i < levelOrderTraversal.Count; i++)
+            {
+                sbRightView.Append(levelOrderTraversal[i][levelOrderTraversal[i].Count() - 1]);
+            }
+            Console.WriteLine("Result at Right View of Given Binary Tree is: " + sbRightView.ToString());
+
 
             Console.ReadKey();
             
@@ -167,8 +184,6 @@ namespace BinaryTrees
             //08/03/2020
             //Top View
             //Bottom View
-            //Left View
-            //Right View
             //Reverse Alternate Levels
             //Flatten Binary Tree
         }
