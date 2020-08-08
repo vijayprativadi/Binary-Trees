@@ -136,15 +136,18 @@ namespace BinaryTrees
 
             //Root to Leaf Paths
             List<string> roottoLeafPaths = binaryTree.RootToLeafPath();
-            Console.WriteLine("List of Root->Leaf Paths are below");
+            Console.WriteLine("List of Root->Leaf Paths are below:");
             foreach(string roottoLeafPathItem in roottoLeafPaths)
             {
                 Console.WriteLine(roottoLeafPathItem);
             }
 
+            Console.WriteLine("Lowest Common Ancestor of 1 and 3 is: " + binaryTree.LowestCommonAncestor(binaryTree.root, new Node(1), new Node(3)).data);
+
             Console.ReadKey();
             
             //Check If binary trees are isomorphic
+            //Find Path equal to Sum K
             //Check if binary tree is part of subtree
             //Invert or Mirror Binary Tree
             //Boundry Traversal
@@ -154,7 +157,6 @@ namespace BinaryTrees
             //Bottom View
             //Left View
             //Right View
-            //LCS
             //Reverse Alternate Levels
             //Flatten Binary Tree
         }

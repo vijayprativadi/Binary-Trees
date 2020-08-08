@@ -609,5 +609,20 @@ namespace BinaryTrees
                 Helper(root.right, currentPath + root.data + "->", result);
             }
         }
+
+        public Node LowestCommonAncestor(Node root, Node p, Node q)
+        {
+            if (p.data < root.data && q.data < root.data)
+            {
+                return LowestCommonAncestor(root.left, p, q);
+            }
+
+            if (p.data > root.data && q.data > root.data)
+            {
+                return LowestCommonAncestor(root.right, p, q);
+            }
+
+            return root;
+        }
     }
 }
