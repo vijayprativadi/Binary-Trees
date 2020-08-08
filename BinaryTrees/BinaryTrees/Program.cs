@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -122,22 +123,38 @@ namespace BinaryTrees
 
             Console.WriteLine("Are these two Binary Trees Identical? Answer: " + binaryTree.checkIfBinaryTreesAreIdentical(binaryTreeIdentical1.root, binaryTreeIdentical2.root));
 
-            Console.ReadKey();
+            //Maximum Path Sum of Binary Tree
+            Console.WriteLine("Maximum path sum of the Binary Tree is: " + binaryTree.MaxPathSum(binaryTree.root));
 
-            //Check If binary trees are identical
+            //Each Branch Sum of Binary Tree
+            ArrayList branchSumResult = new ArrayList();
+            branchSumResult = binaryTree.BranchSum();
+            for (int i = 0; i < branchSumResult.Count; i++)
+            {
+                Console.WriteLine("For {0} branch sum is: {1}", i+1, branchSumResult[i].ToString());
+            }
+
+            //Root to Leaf Paths
+            List<string> roottoLeafPaths = binaryTree.RootToLeafPath();
+            Console.WriteLine("List of Root->Leaf Paths are below");
+            foreach(string roottoLeafPathItem in roottoLeafPaths)
+            {
+                Console.WriteLine(roottoLeafPathItem);
+            }
+
+            Console.ReadKey();
+            
             //Check If binary trees are isomorphic
             //Check if binary tree is part of subtree
             //Invert or Mirror Binary Tree
             //Boundry Traversal
 
             //08/03/2020
-            //Branch Sum
             //Top View
             //Bottom View
             //Left View
             //Right View
             //LCS
-            //Max Path Sum
             //Reverse Alternate Levels
             //Flatten Binary Tree
         }
